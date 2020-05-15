@@ -1,4 +1,4 @@
-# HomeMonitor
+# HomeMonitor :herb:
 API for monotoring my home. Will add more obscure data over time.
 Data so far
 
