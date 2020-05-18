@@ -1,10 +1,9 @@
 const mongoose = require('mongoose')
 const config = require('config')
 const dbPassword = config.get('mongoDb.mongoDbPassword')
-const asyncHandler = require('../middleware/async')
 
-module.exports = asyncHandler( async () => {
-    await mongoose.connect(`mongodb+srv://simon:${dbPassword}@cluster0-tecp0.mongodb.net/MyMovies?retryWrites=true&w=majority`, {
+module.exports = async () => {
+    await mongoose.connect(`mongodb://simon:${dbPassword}@ds119150.mlab.com:19150/homemonitor`, {
         useUnifiedTopology: true,
         useNewUrlParser: true,
     })
@@ -15,4 +14,4 @@ module.exports = asyncHandler( async () => {
             process.exit(0);
         });
     });
-})
+}
