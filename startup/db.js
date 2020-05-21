@@ -1,10 +1,8 @@
 const mongoose = require('mongoose')
-const config = require('config')
-const dbPassword = config.get('mongoDbPassword')
+const dbPassword = process.env.DB_PASSWORD;
 
 module.exports = async () => {
     try {
-        console.log(dbPassword)
         await mongoose.connect(`mongodb://simon:${dbPassword}@ds151247.mlab.com:51247/homemonitor`, {
             useUnifiedTopology: true,
             useNewUrlParser: true,

@@ -1,5 +1,4 @@
-const config = require('config')
-const apiPassword = config.get('apiPassword')
+const apiPassword = process.env.API_PASSWORD
 
 module.exports = (err, req, res, next) => {
     const key = req.get('x-api-key');
