@@ -6,3 +6,6 @@ Data so far
  - Soil humidity, soil temperature and light level of a beautiful potted tomato plant on my balcony. Arduino w/ wifi module
  - All displayed on a tiny 2x16 LCD
  
+ 
+ # Would it not be better, cheaper and less time consuming to purchase "plug and play"-IoT products?
+ Yes it would. 
