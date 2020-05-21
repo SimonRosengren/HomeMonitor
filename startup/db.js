@@ -3,7 +3,7 @@ const config = require('config')
 const dbPassword = config.get('mongoDb.mongoDbPassword')
 
 module.exports = async () => {
-    await mongoose.connect(`mongodb://simon:${dbPassword}@ds119150.mlab.com:19150/homemonitor`, {
+    await mongoose.connect(`mongodb://simon:${dbPassword}@ds151247.mlab.com:51247/homemonitor`, {
         useUnifiedTopology: true,
         useNewUrlParser: true,
     })
