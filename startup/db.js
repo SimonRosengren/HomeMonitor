@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
 const config = require('config')
-const dbPassword = config.get('mongoDb.mongoDbPassword')
+const dbPassword = config.get('mongoDbPassword')
 
 module.exports = async () => {
     try {
