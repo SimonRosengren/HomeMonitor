@@ -1,10 +1,12 @@
-const int analogInPin = A0;
-int sensorValue = 0;
+#include <ESP8266HTTPClient.h>
 #include "ESP8266WiFi.h"
 
-// WiFi parameters to be configured
+const int analogInPin = A0;
+int sensorValue = 0;
+const char *host = "http://simon-rosengren-home-monitor.herokuapp.com/api/soilmoisture";
+HTTPClient http;
 const char* ssid = "DHARMA_INITIATIVE_24";
-const char* password = "??????";
+const char* password = "xZor1337?";
 
 void setup(void)
 { 
@@ -25,6 +27,22 @@ void setup(void)
   Serial.println(WiFi.localIP());
 }
 
-void loop() {
+void loop() {    
+  sensorValue = analogRead(analogInPin);
+  
+  String postData = String("{\"plantId\":1,\"moisture\":") + sensorValue + "}";
+  http.begin(host);
+  delay(1000); // See if this prevents the problm with connection refused and deep sleep
+  http.addHeader("Content-Type", "application/json");    
+  http.addHeader("x-api-key", "abcdefg123456789");    
+  
+  int httpCode = http.POST(postData);
+  String payload = http.getString();
 
+  Serial.println(httpCode);
+  Serial.println(payload);
+
+  http.end();
+
+  delay(1000 * 60);
 }
