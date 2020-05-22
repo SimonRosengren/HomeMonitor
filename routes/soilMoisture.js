@@ -4,8 +4,8 @@ const SoilMoisture = require('../models/SoilMoisture')
 
 router.post('/', async (req, res, next) => {
     try {
-        const moisture = new SoilMoisture({ platId: req.body.platId, moisture: req.body.moisture, date: req.body.date })
-        await temp.save();
+        const moisture = new SoilMoisture({ plantId: req.body.plantId, moisture: req.body.moisture, date: Date.now() })
+        await moisture.save();
         res.send(JSON.stringify(moisture))
     } catch (error) {
         next(error)
