@@ -12,16 +12,20 @@ router.post('/', async (req, res, next) => {
     }
 })
 
-// router.get('/', (req, res) => {
-//     if (req.query.) {
-//         Genre.find( {name: req.query.name} )
-//             .then(result => res.send(result))
-//         return;
-//     }
-//     Temperature.find()
-//         .then(result => res.send(result))
-//         .cathch(err => res.status(400).send(err))
-// })
+router.get('/', async (req, res, next) => {
+    try {
+        const date = req.query.date
+        if (date) {
+            const result = await SoilMoisture.findOne( {date} )
+            res.send(result);
+        } 
+        const result = await SoilMoisture.find();
+        res.send( {result} )
+
+    } catch (error) {
+        next(error)
+    }
+})
 
 module.exports = router;
 
