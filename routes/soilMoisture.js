@@ -16,11 +16,32 @@ router.get('/', async (req, res, next) => {
     try {
         const date = req.query.date
         if (date) {
-            const result = await SoilMoisture.findOne( {date} )
+            const result = await SoilMoisture.findOne({ date })
             res.send(result);
-        } 
+        }
         const result = await SoilMoisture.find();
-        res.send( {result} )
+        res.send({ result })
+
+    } catch (error) {
+        next(error)
+    }
+})
+
+router.get('/latest', async (req, res, next) => {
+    try {
+        let before = new Date(Date.now());
+        before.setMinutes(before.getMinutes() - 2); // 2 minutes should always give atleast one entry
+        console.log(before.getTime());
+
+        const soilMoisture = await SoilMoisture.find(
+            {
+                date: { $gte: before.getTime() }
+            })
+        .sort({ date: 'desc' })
+        .lean()
+        .exec();
+        
+        res.send(soilMoisture[0]);
 
     } catch (error) {
         next(error)
