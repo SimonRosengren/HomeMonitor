@@ -1,11 +1,11 @@
 const express = require('express')
 const router = express.Router();
-const Temperature = require('../models/Temperature')
+const Humidity = require('../models/Humidity')
 
 router.post('/', async (req, res, next) => {
     try {
-        const temp = new Temperature({ date: req.body.date, temperature: req.body.temperature })
-        const result = await temp.save();
+        const hum = new Humidity({ date: req.body.date, humidity: req.body.humidity })
+        const result = await hum.save();
         res.send(JSON.stringify(result))
     } catch (error) {
         next(error)
