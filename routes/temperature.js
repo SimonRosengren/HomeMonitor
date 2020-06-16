@@ -4,7 +4,7 @@ const Temperature = require('../models/Temperature')
 
 router.post('/', async (req, res, next) => {
     try {
-        const temp = new Temperature({ date: req.body.date, temperature: req.body.temperature })
+        const temp = new Temperature({ date: Date.now(), temperature: req.body.temperature })
         const result = await temp.save();
         res.send(JSON.stringify(result))
     } catch (error) {

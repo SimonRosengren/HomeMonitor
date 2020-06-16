@@ -19,9 +19,8 @@ void setup()
 
   // while wifi not connected yet, print '.'
   // then after it connected, get out of the loop
-  while (WiFi.waitForConnectResult() != WL_CONNECTED) {
+  while (WiFi.status() != WL_CONNECTED) {
      delay(500);
-
      Serial.print(".");
   }
   //print a new line, then print WiFi connected and the IP address
@@ -46,6 +45,8 @@ void loop()
   
   int httpCode = http.POST(postData);
   String payload = http.getString();
+  Serial.println("Temp endpoint returned: ");
+  Serial.println(httpCode);
   http.end();
 
 
@@ -57,6 +58,8 @@ void loop()
   
   httpCode = http.POST(postData);
   payload = http.getString();
+  Serial.println("Hum endpoint returned: ");
+  Serial.println(httpCode);
   http.end();
   
 

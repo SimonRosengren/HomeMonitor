@@ -4,7 +4,7 @@ const Humidity = require('../models/Humidity')
 
 router.post('/', async (req, res, next) => {
     try {
-        const hum = new Humidity({ date: req.body.date, humidity: req.body.humidity })
+        const hum = new Humidity({ date: Date.now(), humidity: req.body.humidity })
         const result = await hum.save();
         res.send(JSON.stringify(result))
     } catch (error) {
