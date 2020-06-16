@@ -5,8 +5,8 @@ const int analogInPin = A0;
 int sensorValue = 0;
 const char *host = "http://simon-rosengren-home-monitor.herokuapp.com/api/soilmoisture";
 HTTPClient http;
-const char* ssid = "DHARMA_INITIATIVE_24";
-const char* password = "xZor1337?";
+const char* ssid = "***";
+const char* password = "***";
 
 void setup(void)
 { 
