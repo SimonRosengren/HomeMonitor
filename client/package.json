@@ -10,6 +10,7 @@
     "react-dom": "^16.13.1",
     "react-scripts": "3.4.1"
   },
+  "proxy": "http://localhost:5000",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
@@ -30,6 +31,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "proxy": "http://localhost:4200"
+  }
 }
