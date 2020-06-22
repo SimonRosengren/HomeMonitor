@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
 import './components/welcome/Welcome';
+import Header from './components/header/Header';
 import Welcome from './components/welcome/Welcome';
 
 function App() {
@@ -23,8 +24,8 @@ function App() {
 
   return (
     <div className="App">
+      <Header />
       <Welcome />
-      <h2>{JSON.stringify(temp)}</h2>
     </div>
   );
 }

@@ -9,7 +9,7 @@
     margin: 0 $spacing-l;
 
     .accentBox { 
-        background-color: $color-beige;
+        background-color: $color-light-grey;
         flex-grow: 3;
         height: 90%;
         margin: auto;
@@ -33,5 +33,21 @@
         background-size: cover;
         height: 90%;
         margin: auto;
+        display: flex;
+        justify-content: center;
+        .buttonWrapper{
+            margin: auto;
+            display: flex;
+            flex-direction: column;
+            button{
+                background-color: rgba(255, 255, 255, .15);  
+                backdrop-filter: blur(3px);
+                border: 1px solid yellow;
+                margin: $spacing-s;
+                padding: $spacing-m;
+                color: yellow;
+                letter-spacing: 0.2rem;
+            }
+        }
     }
 }
