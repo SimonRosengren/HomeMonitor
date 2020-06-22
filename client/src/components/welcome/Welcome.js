@@ -4,7 +4,17 @@ import './Welcome.scss'
 function Welcome() {
 
   return (
-    <h1>Hello.</h1>
+    <div className="wrapper">
+        <div className="accentBox">
+            <div className="mainContent">
+                <h2>Hello.</h2>
+                <p>I'm Simon and I'm a developer</p>
+            </div>
+        </div>
+        <div className="secondaryBox">
+
+        </div>
+    </div>
   );
 }
 

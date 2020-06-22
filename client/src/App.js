@@ -11,7 +11,7 @@ function App() {
       const hum = await (await fetch('/api/soilmoisture/latest')).json()
       console.log(JSON.stringify(hum))
       setTemp(hum)
-      
+
     } catch (error) {
       console.log(error)
     }
@@ -23,10 +23,8 @@ function App() {
 
   return (
     <div className="App">
-      <header className="App-header">
-        <Welcome />
-        <h2>{JSON.stringify(temp)}</h2>
-      </header>
+      <Welcome />
+      <h2>{JSON.stringify(temp)}</h2>
     </div>
   );
 }
