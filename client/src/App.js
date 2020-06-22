@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
+import './components/welcome/Welcome';
+import Welcome from './components/welcome/Welcome';
 
 function App() {
   const [temp, setTemp] = useState();
@@ -22,6 +24,7 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
+        <Welcome />
         <h2>{JSON.stringify(temp)}</h2>
       </header>
     </div>
