@@ -3,8 +3,8 @@
 #include <dht11.h>
 #define DHT11PIN D7
 
-const char *tempUrl = "http://simon-rosengren-home-monitor.herokuapp.com/api/temperature";
-const char *humUrl = "http://simon-rosengren-home-monitor.herokuapp.com/api/humidity";
+const char *tempUrl = "http://simonrosengren.herokuapp.com/api/temperature";
+const char *humUrl = "http://simonrosengren.herokuapp.com/api/humidity";
 HTTPClient http;
 const char* ssid = "***";
 const char* password = "***";

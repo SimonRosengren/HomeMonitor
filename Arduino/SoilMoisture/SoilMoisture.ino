@@ -3,7 +3,7 @@
 
 const int analogInPin = A0;
 int sensorValue = 0;
-const char *host = "http://simon-rosengren-home-monitor.herokuapp.com/api/soilmoisture";
+const char *host = "http://simonrosengren.herokuapp.com/api/soilmoisture";
 HTTPClient http;
 const char* ssid = "***";
 const char* password = "***";

@@ -14,6 +14,7 @@ router.post('/', async (req, res, next) => {
 
 router.get('/', async (req, res, next) => {
     try {
+        console('Im hit')
         const date = req.query.date
         if (date) {
             const result = await SoilMoisture.findOne({ date })
@@ -30,8 +31,7 @@ router.get('/', async (req, res, next) => {
 router.get('/latest', async (req, res, next) => {
     try {
         let before = new Date(Date.now());
-        before.setMinutes(before.getMinutes() - 2); // 2 minutes should always give atleast one entry
-        console.log(before.getTime());
+        before.setHours(before.getHours - 900); 
 
         const soilMoisture = await SoilMoisture.find(
             {
@@ -40,7 +40,7 @@ router.get('/latest', async (req, res, next) => {
         .sort({ date: 'desc' })
         .lean()
         .exec();
-        
+        console.log(soilMoisture)
         res.send(soilMoisture[0]);
 
     } catch (error) {
