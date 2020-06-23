@@ -14,7 +14,6 @@ router.post('/', async (req, res, next) => {
 
 router.get('/', async (req, res, next) => {
     try {
-        console('Im hit')
         const date = req.query.date
         if (date) {
             const result = await SoilMoisture.findOne({ date })

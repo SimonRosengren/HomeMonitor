@@ -1,22 +1,16 @@
+const graphqlHTTP = require('express-graphql')
 const errorHandler = require('../middleware/errorHandler')
-const tempRouter = require('../routes/temperature');
+const tempRouter = require('../routes/temperature')
 const soilMoistureRouter = require('../routes/soilMoisture')
 const humidityRoter = require('../routes/humidity')
+const schema = require('../gqlschema/gqlschema')
 const auth = require('../middleware/auth')
 module.exports = (app, express) => {
-    // // Allow CORS
-    // app.use((req, res, next) => {
-    //     res.header('Access-Control-Allow-Origin', '*');
-    //     res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');
-    //     res.header('Access-Control-Allow-Headers', 'Content-Type, application/json, x-api-key');
-    //     // intercept OPTIONS method
-    //     if ('OPTIONS' == req.method) {
-    //         res.send(200);
-    //     }
-    //     else {
-    //         next();
-    //     }
-    // });
+
+    app.use('/graphql', graphqlHTTP({
+        schema,
+        graphiql: true
+    }))
     app.use(express.json())
     app.use('/api/temperature', tempRouter)
     app.use('/api/humidity', auth, humidityRoter)
