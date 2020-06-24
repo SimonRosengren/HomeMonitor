@@ -1,0 +1,25 @@
+@import '../../styles/colors.scss';
+@import '../../styles/sizes.scss';
+
+.headerWrapper {
+    display: flex;
+    position: absolute;
+    right: $spacing-l;
+    max-height: 3rem;
+    top: -1rem;
+    .headerContent{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;        
+        margin-top: $spacing-m;
+
+        .icon{
+            width: 1rem;
+            margin: 0 0.5 rem 0 2rem;
+            img {
+                height: 100%;
+                width: auto;
+            }
+        }
+    }
+}
