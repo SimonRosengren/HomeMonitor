@@ -1,0 +1,9 @@
+@import '../../styles/colors.scss';
+@import '../../styles/sizes.scss';
+
+.menu{
+    background-image: url('../../images/aerial-photo-of-gray-concrete-road-938582.jpg');
+    background-size: cover;
+    height: 100%;
+    flex: 4;
+}

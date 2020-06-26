@@ -11,7 +11,32 @@ const SoilMoistureType = new GraphQLObjectType({
         id: {type: GraphQLID},
         plantId: {type: GraphQLID},
         moisture: {type: GraphQLInt},
-        date: {type: GraphQLString}
+        date: {type: GraphQLString},
+        temperature: {
+            type: TemperatureType,
+            async resolve(parent, args){
+                // Since there is no unique ID connecting data entries and since one entry might fail on certain data, the connection is 
+                // any entry made 5 minutes before or 5 minutes after.  
+
+                let before = new Date(parseInt(parent.date));
+                before.setMinutes(before.getMinutes() - 5);
+                let later = new Date(parseInt(parent.date));
+                later.setMinutes(before.getMinutes() + 5);
+                const temp = await Temperature.find( { date: { $gte: before.getTime(), $lt: later.getTime() } } ).sort({ date: -1 }).limit(1);
+                return temp[0];
+            }
+        },
+        humidity: {
+            type: HumidityType,
+            async resolve(parent, args){
+                let before = new Date(parseInt(parent.date));
+                before.setMinutes(before.getMinutes() - 5);
+                let later = new Date(parseInt(parent.date));
+                later.setMinutes(before.getMinutes() + 5);
+                const temp = await Humidity.find( { date: { $gte: before.getTime(), $lt: later.getTime() } } ).sort({ date: -1 }).limit(1);
+                return temp[0];
+            }
+        }
     })
 });
 
@@ -48,7 +73,7 @@ const RootQuery = new GraphQLObjectType({
             type: GraphQLList(SoilMoistureType),
             args: {limit: {type: GraphQLInt}},
             async resolve(parent, args) {
-                const result = await SoilMoisture.find().limit(args.limit);
+                const result = await SoilMoisture.find({}).sort({ date: -1 }).limit(args.limit);
                 return result;
             }
         },
@@ -64,7 +89,7 @@ const RootQuery = new GraphQLObjectType({
             type: GraphQLList(TemperatureType),
             args: {limit: {type: GraphQLInt}},
             async resolve(parent, args) {
-                const result = await Temperature.find().limit(args.limit);
+                const result = await Temperature.find({}).sort({ date: -1 }).limit(args.limit);
                 return result;
             }
         },
@@ -80,7 +105,7 @@ const RootQuery = new GraphQLObjectType({
             type: GraphQLList(HumidityType),
             args: {limit: {type: GraphQLInt}},
             async resolve(parent, args) {
-                const result = await Humidity.find().limit(args.limit);
+                const result = await Humidity.find().find({}).sort({ date: -1 }).limit(args.limit);
                 return result;
             }
         }

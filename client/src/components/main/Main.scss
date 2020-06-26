@@ -1,0 +1,12 @@
+@import '../../styles/colors.scss';
+@import '../../styles/sizes.scss';
+
+
+.main {
+    height: 90vh;
+    padding: 0 $spacing-l;
+    display: flex;
+    flex-direction: row;
+    flex: 1;
+    margin: auto;
+}

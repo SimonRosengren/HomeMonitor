@@ -1,0 +1,11 @@
+@import '../../styles/colors.scss';
+@import '../../styles/sizes.scss';
+
+
+.content { 
+    background-color: $color-light-grey;
+    height: 100%;
+    flex: 3;
+    display: flex;
+    justify-content: center;
+}

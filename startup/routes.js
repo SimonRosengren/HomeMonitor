@@ -7,7 +7,7 @@ const schema = require('../gqlschema/gqlschema')
 const auth = require('../middleware/auth')
 module.exports = (app, express) => {
 
-    app.use('/graphql', graphqlHTTP({
+    app.use('/api/graphql', graphqlHTTP({
         schema,
         graphiql: true
     }))
