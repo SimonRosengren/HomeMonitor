@@ -6,4 +6,34 @@
     background-size: cover;
     height: 100%;
     flex: 4;
+    display: flex;
+    justify-content: center;
+    .buttonWrapper {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        button {
+            background: transparent;
+            border: 2px solid $color-yellow;
+            padding: $spacing-m;
+            letter-spacing: 0.7rem;
+            margin: $spacing-s;
+            color: white;
+            backdrop-filter: blur(5px);
+            cursor: pointer;
+        }
+        button:hover,
+        button:focus {
+            backdrop-filter: blur(2px);
+        }
+        
+        button:focus {
+            outline: none;
+            outline-offset: -4px;
+        }
+        
+        button:active {
+            transform: scale(0.99);
+        }
+    }
 }

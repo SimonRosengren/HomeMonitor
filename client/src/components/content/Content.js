@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import './Content.scss';
+import Welcome from './welcome/Welcome';
 
-function Content() {
-
+function Content(props) {
+    const {content} = props;
     return (
         <div className="content">
-            <h2>Hello.</h2>
-            <p>I'm Simon and I'm a developer</p>
+            {content}
         </div>
     );
 }
