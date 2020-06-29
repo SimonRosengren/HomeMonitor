@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './Menu.scss'
 import Welcome from '../content/welcome/Welcome';
 import Empty from '../empty/Empty';
-import Data from '../data/Data';
+import Dashboard from '../dashboard/Dashboard';
 
 function Menu(props) {
     const { setContent } = props;
@@ -15,7 +15,7 @@ function Menu(props) {
                 <button>JOBS</button>
                 <button>THIS</button>
                 <button onClick={() => {
-                    setContent(<Data />)
+                    setContent(<Dashboard />)
                 }}>Data</button>
                 <button onClick={() => {
                     setContent(<Empty />)

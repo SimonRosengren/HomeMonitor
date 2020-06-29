@@ -1,0 +1,20 @@
+.dataCard {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid red;
+    height: 10rem;
+    .topData {
+        margin-top: 0;
+    }
+    .middleSection {
+        display: flex;
+        justify-content: center;
+        .dataTitle {
+            margin: auto;
+        }
+    }
+    .bottomData {
+        display: flex;
+        justify-content: flex-end;
+    }
+}

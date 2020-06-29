@@ -45,7 +45,29 @@ const TemperatureType = new GraphQLObjectType({
     fields: () => ({
         id: {type: GraphQLID},
         temperature: {type: GraphQLInt},
-        date: {type: GraphQLString}
+        date: {type: GraphQLString},
+        soilMoisture: {
+            type: SoilMoistureType,
+            async resolve(parent, args){
+                let before = new Date(parseInt(parent.date));
+                before.setMinutes(before.getMinutes() - 5);
+                let later = new Date(parseInt(parent.date));
+                later.setMinutes(before.getMinutes() + 5);
+                const temp = await SoilMoisture.find( { date: { $gte: before.getTime(), $lt: later.getTime() } } ).sort({ date: -1 }).limit(1);
+                return temp[0];
+            }
+        },
+        humidity: {
+            type: HumidityType,
+            async resolve(parent, args){
+                let before = new Date(parseInt(parent.date));
+                before.setMinutes(before.getMinutes() - 5);
+                let later = new Date(parseInt(parent.date));
+                later.setMinutes(before.getMinutes() + 5);
+                const temp = await Humidity.find( { date: { $gte: before.getTime(), $lt: later.getTime() } } ).sort({ date: -1 }).limit(1);
+                return temp[0];
+            }
+        }
     })
 });
 
@@ -54,7 +76,29 @@ const HumidityType = new GraphQLObjectType({
     fields: () => ({
         id: {type: GraphQLID},
         humidity: {type: GraphQLInt},
-        date: {type: GraphQLString}
+        date: {type: GraphQLString},
+        soilMoisture: {
+            type: SoilMoistureType,
+            async resolve(parent, args){
+                let before = new Date(parseInt(parent.date));
+                before.setMinutes(before.getMinutes() - 5);
+                let later = new Date(parseInt(parent.date));
+                later.setMinutes(before.getMinutes() + 5);
+                const temp = await SoilMoisture.find( { date: { $gte: before.getTime(), $lt: later.getTime() } } ).sort({ date: -1 }).limit(1);
+                return temp[0];
+            }
+        },
+        temperature: {
+            type: TemperatureType,
+            async resolve(parent, args){
+                let before = new Date(parseInt(parent.date));
+                before.setMinutes(before.getMinutes() - 5);
+                let later = new Date(parseInt(parent.date));
+                later.setMinutes(before.getMinutes() + 5);
+                const temp = await Temperature.find( { date: { $gte: before.getTime(), $lt: later.getTime() } } ).sort({ date: -1 }).limit(1);
+                return temp[0];
+            }
+        }
     })
 });
 
